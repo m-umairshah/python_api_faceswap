@@ -1,0 +1,93 @@
+[
+  {
+    "face_id": 1,
+    "bbox": [
+      131,
+      174,
+      576,
+      620
+    ],
+    "face_shape": {
+      "shape": "Square",
+      "description": "You have a square face with strong, defined angles.",
+      "measurements": {
+        "width": 371.3,
+        "length": 372.8,
+        "jaw_width": 257.1,
+        "forehead_width": 195.0,
+        "width_to_length_ratio": 1.0
+      },
+      "characteristics": {
+        "chin": "Square",
+        "cheekbone": "High",
+        "temple": "Normal",
+        "apple_cheeks": "Prominent"
+      },
+      "recommendations": [
+        "Soften angles with rounded frames",
+        "Add width to upper face",
+        "Avoid sharp, angular styles"
+      ]
+    },
+    "eyes": {
+      "characteristics": {
+        "size": "Large",
+        "shape": "Almond",
+        "spacing": "Wide"
+      },
+      "measurements": {
+        "distance": 107.0,
+        "avg_width": 63.1,
+        "avg_height": 19.6,
+        "left_width": 64.3,
+        "right_width": 62.0
+      },
+      "description": "You have large, almond-shaped eyes with wide spacing."
+    },
+    "eyebrows": {
+      "characteristics": {
+        "thickness": "Thin",
+        "arch": "Straight",
+        "spacing": "Wide spacing"
+      },
+      "measurements": {
+        "length": 135.6,
+        "height": 0.0,
+        "spacing": 48.1
+      },
+      "description": "You have thin eyebrows with straight arch and Wide spacing."
+    },
+    "nose": {
+      "characteristics": {
+        "width": "Wide",
+        "length": "Long",
+        "shape": "Straight",
+        "bridge": "High bridge"
+      },
+      "measurements": {
+        "width": 78.0,
+        "height": 128.1,
+        "bridge_width": 78.0,
+        "width_ratio": 0.61
+      },
+      "description": "You have a wide, long nose with a straight shape and High bridge."
+    },
+    "lips": {
+      "characteristics": {
+        "width": "Wide",
+        "thickness": "Thin",
+        "shape": "Top-heavy",
+        "cupid_bow": "Pronounced"
+      },
+      "measurements": {
+        "width": 136.0,
+        "height": 17.0,
+        "upper_height": 52.6,
+        "lower_height": 29.0,
+        "width_ratio": 8.0
+      },
+      "description": "You have wide, thin lips with a top-heavy shape."
+    },
+    "overall_score": 30
+  }
+]

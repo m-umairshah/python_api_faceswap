@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Analysis API Test Tool</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-orange: #ff8c42;
+            --primary-orange-hover: #ff7a2e;
+            --dark-bg: #000000;
+            --dark-card: #1a1a1a;
+            --dark-border: #333333;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #888888;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .custom-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 15px;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-orange);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--primary-orange-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange);
+            background: transparent;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .form-control, .form-select {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            color: var(--text-primary);
+            border-radius: 10px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: var(--dark-card);
+            border-color: var(--primary-orange);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.2rem rgba(255, 140, 66, 0.25);
+        }
+
+        .text-primary-custom {
+            color: var(--primary-orange) !important;
+        }
+
+        .text-secondary-custom {
+            color: var(--text-secondary) !important;
+        }
+
+        .text-muted-custom {
+            color: var(--text-muted) !important;
+        }
+
+        .loading-spinner {
+            width: 2rem;
+            height: 2rem;
+            border: 3px solid var(--dark-border);
+            border-top: 3px solid var(--primary-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .result-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid var(--dark-border);
+        }
+
+        .feature-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+
+        .json-viewer {
+            background: #1e1e1e;
+            border: 1px solid var(--dark-border);
+            border-radius: 10px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .nav-tabs {
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            color: var(--text-secondary);
+            background: transparent;
+            border-radius: 0;
+            padding: 1rem 1.5rem;
+        }
+
+        .nav-tabs .nav-link:hover {
+            border: none;
+            color: var(--primary-orange);
+            background: rgba(255, 140, 66, 0.1);
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--primary-orange) !important;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid var(--primary-orange);
+        }
+
+        .table-dark {
+            --bs-table-bg: var(--dark-card);
+            --bs-table-border-color: var(--dark-border);
+        }
+
+        .alert-success {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.3);
+        }
+
+        .alert-danger {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+        .progress {
+            background: var(--dark-border);
+            border-radius: 10px;
+            height: 20px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-orange), var(--primary-orange-hover));
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-white mb-3">
+                <i class="bi bi-cpu text-primary-custom me-3"></i>
+                Face Analysis API Test Tool
+            </h1>
+            <p class="lead text-secondary-custom">
+                Test the Face Analysis API with different tools and image URLs
+            </p>
+        </div>
+
+        <!-- API Configuration -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="custom-card">
+                    <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                        <h5 class="text-white mb-0">
+                            <i class="bi bi-gear me-2"></i>API Configuration
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="apiUrl" class="form-label text-white">API Base URL</label>
+                                <input type="url" class="form-control" id="apiUrl" value="http://localhost:5001" placeholder="http://localhost:5001">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="toolType" class="form-label text-white">Analysis Tool</label>
+                                <select class="form-select" id="toolType">
+                                    <option value="face_analysis">Face Analysis (Comprehensive)</option>
+                                    <option value="face_rating">Face Rating (Attractiveness)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Form -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="custom-card">
+                    <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                        <h5 class="text-white mb-0">
+                            <i class="bi bi-link-45deg me-2"></i>Image Input
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <label for="imageUrl" class="form-label text-white">Image URL</label>
+                            <input type="url" class="form-control" id="imageUrl" 
+                                   placeholder="https://example.com/image.jpg"
+                                   value="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face">
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-muted-custom">
+                                <strong>Sample URLs to test:</strong><br>
+                                • https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face<br>
+                                • https://images.unsplash.com/photo-1494790108755-2616b612b786?w=500&h=500&fit=crop&crop=face<br>
+                                • https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop&crop=face
+                            </small>
+                        </div>
+                        <div class="d-flex gap-3">
+                            <button type="button" class="btn btn-primary-custom" id="analyzeBtn">
+                                <i class="bi bi-play-circle me-2"></i>Analyze Image
+                            </button>
+                            <button type="button" class="btn btn-outline-custom" id="clearBtn">
+                                <i class="bi bi-trash me-2"></i>Clear Results
+                            </button>
+                            <button type="button" class="btn btn-outline-custom" id="healthCheckBtn">
+                                <i class="bi bi-heart-pulse me-2"></i>Health Check
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="row mb-4 d-none" id="loadingSection">
+            <div class="col-12">
+                <div class="custom-card text-center">
+                    <div class="card-body p-4">
+                        <div class="loading-spinner mx-auto mb-3"></div>
+                        <h5 class="text-primary-custom mb-3">Processing Image...</h5>
+                        <p class="text-secondary-custom mb-0" id="loadingMessage">Downloading and analyzing image...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="row" id="resultsSection" style="display: none;">
+            <!-- API Response Info -->
+            <div class="col-12 mb-4">
+                <div class="custom-card">
+                    <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                        <h5 class="text-white mb-0">
+                            <i class="bi bi-info-circle me-2"></i>API Response Info
+                        </h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row" id="responseInfo">
+                            <!-- Response info will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Tabs -->
+            <div class="col-12">
+                <div class="custom-card">
+                    <div class="card-header bg-transparent border-bottom border-secondary p-0">
+                        <ul class="nav nav-tabs border-0" id="resultsTabs" role="tablist">
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#visualResults">
+                                    <i class="bi bi-images me-2"></i>Visual Results
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#detailedResults">
+                                    <i class="bi bi-list-ul me-2"></i>Detailed Analysis
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#rawJson">
+                                    <i class="bi bi-code-square me-2"></i>Raw JSON
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="tab-content">
+                            <!-- Visual Results Tab -->
+                            <div class="tab-pane fade show active" id="visualResults">
+                                <div id="visualContent">
+                                    <!-- Visual results will be populated here -->
+                                </div>
+                            </div>
+
+                            <!-- Detailed Results Tab -->
+                            <div class="tab-pane fade" id="detailedResults">
+                                <div id="detailedContent">
+                                    <!-- Detailed analysis will be populated here -->
+                                </div>
+                            </div>
+
+                            <!-- Raw JSON Tab -->
+                            <div class="tab-pane fade" id="rawJson">
+                                <div class="json-viewer" id="jsonContent">
+                                    <!-- Raw JSON will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Section -->
+        <div class="row mb-4 d-none" id="errorSection">
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                    <h6 class="alert-heading">
+                        <i class="bi bi-exclamation-triangle me-2"></i>Error
+                    </h6>
+                    <p class="mb-0" id="errorMessage"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Section -->
+        <div class="row mb-4 d-none" id="successSection">
+            <div class="col-12">
+                <div class="alert alert-success" role="alert">
+                    <h6 class="alert-heading">
+                        <i class="bi bi-check-circle me-2"></i>Success
+                    </h6>
+                    <p class="mb-0" id="successMessage"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            let currentResults = null;
+
+            // Health Check
+            $('#healthCheckBtn').click(function() {
+                const apiUrl = $('#apiUrl').val().trim();
+                if (!apiUrl) {
+                    showError('Please enter API base URL');
+                    return;
+                }
+
+                showLoading('Checking API health...');
+                
+                $.ajax({
+                    url: `${apiUrl}/api/health`,
+                    method: 'GET',
+                    timeout: 10000,
+                    success: function(response) {
+                        hideLoading();
+                        if (response.success) {
+                            showSuccess(`API is healthy! Version: ${response.data.version}`);
+                            console.log('Health check response:', response);
+                        } else {
+                            showError('API health check failed: ' + response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        hideLoading();
+                        showError(`Health check failed: ${error}. Make sure API is running on ${apiUrl}`);
+                    }
+                });
+            });
+
+            // Analyze Image
+            $('#analyzeBtn').click(function() {
+                const apiUrl = $('#apiUrl').val().trim();
+                const imageUrl = $('#imageUrl').val().trim();
+                const toolType = $('#toolType').val();
+
+                if (!apiUrl) {
+                    showError('Please enter API base URL');
+                    return;
+                }
+
+                if (!imageUrl) {
+                    showError('Please enter image URL');
+                    return;
+                }
+
+                showLoading('Downloading and analyzing image...');
+                hideResults();
+                hideError();
+                hideSuccess();
+
+                const requestData = {
+                    image_url: imageUrl,
+                    tool_type: toolType
+                };
+
+                console.log('Sending request:', requestData);
+
+                $.ajax({
+                    url: `${apiUrl}/api/analyze`,
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(requestData),
+                    timeout: 60000,
+                    success: function(response) {
+                        hideLoading();
+                        console.log('API Response:', response);
+                        
+                        if (response.success) {
+                            currentResults = response;
+                            displayResults(response);
+                            showSuccess(response.message);
+                        } else {
+                            showError('Analysis failed: ' + response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        hideLoading();
+                        console.error('API Error:', xhr.responseText);
+                        
+                        let errorMsg = 'Request failed: ' + error;
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMsg = xhr.responseJSON.message;
+                        } else if (status === 'timeout') {
+                            errorMsg = 'Request timed out. The image might be too large or the server is busy.';
+                        }
+                        
+                        showError(errorMsg);
+                    }
+                });
+            });
+
+            // Clear Results
+            $('#clearBtn').click(function() {
+                hideResults();
+                hideError();
+                hideSuccess();
+                currentResults = null;
+            });
+
+            function showLoading(message) {
+                $('#loadingMessage').text(message);
+                $('#loadingSection').removeClass('d-none');
+            }
+
+            function hideLoading() {
+                $('#loadingSection').addClass('d-none');
+            }
+
+            function showError(message) {
+                $('#errorMessage').text(message);
+                $('#errorSection').removeClass('d-none');
+            }
+
+            function hideError() {
+                $('#errorSection').addClass('d-none');
+            }
+
+            function showSuccess(message) {
+                $('#successMessage').text(message);
+                $('#successSection').removeClass('d-none');
+            }
+
+            function hideSuccess() {
+                $('#successSection').addClass('d-none');
+            }
+
+            function showResults() {
+                $('#resultsSection').show();
+            }
+
+            function hideResults() {
+                $('#resultsSection').hide();
+            }
+
+            function displayResults(response) {
+                const data = response.data;
+                
+                // Display response info
+                displayResponseInfo(response);
+                
+                // Display visual results
+                displayVisualResults(data);
+                
+                // Display detailed analysis
+                displayDetailedAnalysis(data);
+                
+                // Display raw JSON
+                $('#jsonContent').text(JSON.stringify(response, null, 2));
+                
+                showResults();
+            }
+
+            function displayResponseInfo(response) {
+                const data = response.data;
+                const info = `
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <div class="text-primary-custom fs-4 fw-bold">${data.tool_type}</div>
+                            <small class="text-muted-custom">Tool Type</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <div class="text-success fs-4 fw-bold">${data.face_count}</div>
+                            <small class="text-muted-custom">Faces Found</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <div class="text-info fs-4 fw-bold">${response.success ? 'Success' : 'Failed'}</div>
+                            <small class="text-muted-custom">Status</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="text-center">
+                            <div class="text-warning fs-4 fw-bold">${new Date(response.timestamp).toLocaleTimeString()}</div>
+                            <small class="text-muted-custom">Processed At</small>
+                        </div>
+                    </div>
+                `;
+                $('#responseInfo').html(info);
+            }
+
+            function displayVisualResults(data) {
+                let visualHtml = '';
+                
+                // Original image
+                visualHtml += `
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-white mb-3">Original Image</h6>
+                            <div class="text-center">
+                                <img src="${data.original_image_url}" alt="Original Image" class="result-image" style="max-height: 300px;">
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Face results
+                if (data.image_urls) {
+                    visualHtml += '<div class="row">';
+                    
+                    Object.keys(data.image_urls).forEach(faceKey => {
+                        const faceData = data.image_urls[faceKey];
+                        const faceId = faceKey.replace('face_', '');
+                        
+                        visualHtml += `<div class="col-md-6 mb-4">`;
+                        visualHtml += `<div class="feature-card">`;
+                        visualHtml += `<h6 class="text-white mb-3">Face ${faceId}</h6>`;
+                        
+                        if (data.tool_type === 'face_analysis') {
+                            // Show original face
+                            if (faceData.original) {
+                                visualHtml += `
+                                    <div class="mb-3">
+                                        <img src="${faceData.original}" alt="Face ${faceId}" class="result-image mb-2">
+                                        <div class="text-center"><small class="text-muted-custom">Original Face</small></div>
+                                    </div>
+                                `;
+                            }
+                            
+                            // Show feature images
+                            if (faceData.features) {
+                                visualHtml += '<div class="row g-2">';
+                                Object.keys(faceData.features).forEach(feature => {
+                                    visualHtml += `
+                                        <div class="col-6">
+                                            <img src="${faceData.features[feature]}" alt="${feature}" class="result-image mb-1" style="max-height: 100px;">
+                                            <div class="text-center"><small class="text-muted-custom">${feature.replace('_', ' ')}</small></div>
+                                        </div>
+                                    `;
+                                });
+                                visualHtml += '</div>';
+                            }
+                        } else if (data.tool_type === 'face_rating') {
+                            // Show highlighted face for rating
+                            if (faceData.highlighted) {
+                                visualHtml += `
+                                    <div class="mb-3">
+                                        <img src="${faceData.highlighted}" alt="Face ${faceId} Highlighted" class="result-image mb-2">
+                                        <div class="text-center"><small class="text-muted-custom">Highlighted Features</small></div>
+                                    </div>
+                                `;
+                            }
+                        }
+                        
+                        visualHtml += `</div></div>`;
+                    });
+                    
+                    visualHtml += '</div>';
+                }
+                
+                $('#visualContent').html(visualHtml);
+            }
+
+            function displayDetailedAnalysis(data) {
+                let detailedHtml = '';
+                
+                if (data.tool_type === 'face_analysis' && data.analysis_results) {
+                    detailedHtml += '<h6 class="text-white mb-3">Face Analysis Results</h6>';
+                    
+                    data.analysis_results.forEach((face, index) => {
+                        detailedHtml += `
+                            <div class="feature-card mb-3">
+                                <h6 class="text-primary-custom mb-3">Face ${face.face_id || index + 1}</h6>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="text-white">Face Shape</h6>
+                                        <p class="text-secondary-custom">${face.face_shape?.shape || 'N/A'}</p>
+                                        <p class="small text-muted-custom">${face.face_shape?.description || ''}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="text-white">Overall Score</h6>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar" style="width: ${face.overall_score || 0}%">${face.overall_score || 0}/100</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-3">
+                                    <div class="col-md-3">
+                                        <strong class="text-white">Eyes:</strong><br>
+                                        <small class="text-secondary-custom">${face.eyes?.characteristics?.shape || 'N/A'}</small>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <strong class="text-white">Nose:</strong><br>
+                                        <small class="text-secondary-custom">${face.nose?.characteristics?.shape || 'N/A'}</small>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <strong class="text-white">Lips:</strong><br>
+                                        <small class="text-secondary-custom">${face.lips?.characteristics?.shape || 'N/A'}</small>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <strong class="text-white">Eyebrows:</strong><br>
+                                        <small class="text-secondary-custom">${face.eyebrows?.characteristics?.thickness || 'N/A'}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                } else if (data.tool_type === 'face_rating' && data.individual_ratings) {
+                    detailedHtml += '<h6 class="text-white mb-3">Face Rating Results</h6>';
+                    
+                    // Summary
+                    detailedHtml += `
+                        <div class="feature-card mb-3">
+                            <h6 class="text-primary-custom mb-3">Summary</h6>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="text-center">
+                                        <div class="text-warning fs-3 fw-bold">${data.average_rating}/10</div>
+                                        <small class="text-muted-custom">Average Rating</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center">
+                                        <div class="text-success fs-3 fw-bold">${data.highest_rated?.overall_rating || 0}/10</div>
+                                        <small class="text-muted-custom">Highest Rating</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center">
+                                        <div class="text-info fs-3 fw-bold">${data.average_percentage}%</div>
+                                        <small class="text-muted-custom">Average Score</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Individual ratings
+                    data.individual_ratings.forEach(face => {
+                        detailedHtml += `
+                            <div class="feature-card mb-3">
+                                <h6 class="text-primary-custom mb-3">Face ${face.face_id}</h6>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="text-center">
+                                            <div class="text-warning fs-2 fw-bold">${face.overall_rating}/10</div>
+                                            <div class="text-success">${face.rating_message}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="progress mb-2" style="height: 25px;">
+                                            <div class="progress-bar" style="width: ${face.percentage}%">${face.percentage}%</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <small class="text-muted-custom">Symmetry: ${Math.round(face.symmetry_score)}%</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <h6 class="text-white">Feature Analysis</h6>
+                                    <div class="row">
+                                        ${face.feature_analysis.map(feature => `
+                                            <div class="col-md-6 mb-2">
+                                                <small class="text-secondary-custom">• ${feature}</small>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+                
+                $('#detailedContent').html(detailedHtml);
+            }
+
+            // Tab switching
+            $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+                $('button[data-bs-toggle="tab"]').removeClass('text-primary-custom').addClass('text-secondary-custom');
+                $(e.target).removeClass('text-secondary-custom').addClass('text-primary-custom');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+{% extends "base.html" %}
+
+{% block title %}Face Rating Results - AI Face Shape Detector{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="text-white mb-0">
+                <i class="bi bi-star-fill text-primary-custom me-3"></i>Face Rating Results
+            </h2>
+            <a href="{{ url_for('face_rating') }}" class="btn-outline-custom">
+                <i class="bi bi-arrow-left me-2"></i>Rate Another
+            </a>
+        </div>
+        <hr class="border-secondary my-4">
+    </div>
+
+    {% if rating_data %}
+        <!-- Summary Statistics -->
+        <div class="col-12 mb-4">
+            <div class="custom-card">
+                <div class="card-body p-4 text-center">
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-people-fill text-primary-custom me-3" style="font-size: 2rem;"></i>
+                                <div>
+                                    <h3 class="text-primary-custom mb-0">{{ rating_data.face_count }}</h3>
+                                    <small class="text-secondary-custom">Face{{ 's' if rating_data.face_count != 1 else '' }} Rated</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-star-fill text-warning me-3" style="font-size: 2rem;"></i>
+                                <div>
+                                    <h3 class="text-warning mb-0">{{ rating_data.average_rating }}/10</h3>
+                                    <small class="text-secondary-custom">Average Rating</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-trophy text-success me-3" style="font-size: 2rem;"></i>
+                                <div>
+                                    <h3 class="text-success mb-0">{{ rating_data.highest_rated.overall_rating }}/10</h3>
+                                    <small class="text-secondary-custom">Highest Score</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-percent text-info me-3" style="font-size: 2rem;"></i>
+                                <div>
+                                    <h3 class="text-info mb-0">{{ rating_data.average_percentage }}%</h3>
+                                    <small class="text-secondary-custom">Average Score</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Face Tabs (only show if multiple faces) -->
+        {% if rating_data.face_count > 1 %}
+        <div class="col-12 mb-4">
+            <div class="custom-card">
+                <div class="card-header bg-transparent border-bottom border-secondary p-0">
+                    <ul class="nav nav-tabs border-0" id="faceRatingTabs" role="tablist">
+                        {% for person in rating_data.individual_ratings %}
+                        <li class="nav-item">
+                            <button class="nav-link {% if loop.first %}active text-primary-custom{% else %}text-secondary-custom{% endif %}" 
+                                    data-bs-toggle="tab" data-bs-target="#face{{ person.face_id }}" 
+                                    type="button" role="tab">
+                                <i class="bi bi-person-circle me-2"></i>
+                                Face {{ person.face_id }}
+                                <span class="badge bg-secondary ms-2">{{ person.overall_rating }}/10</span>
+                            </button>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Individual Face Content -->
+        <div class="tab-content" id="faceRatingTabsContent">
+            {% for person in rating_data.individual_ratings %}
+            <div class="tab-pane fade {% if loop.first %}show active{% endif %}" 
+                 id="face{{ person.face_id }}" role="tabpanel">
+                
+                {% if rating_data.face_count > 1 %}
+                <div class="col-12 mb-3">
+                    <div class="d-flex align-items-center">
+                        <h4 class="text-white mb-0">
+                            <i class="bi bi-person-circle text-primary-custom me-2"></i>
+                            Face {{ person.face_id }} Rating
+                        </h4>
+                        <span class="badge bg-primary-custom ms-3 fs-6">{{ person.overall_rating }}/10</span>
+                    </div>
+                    <hr class="border-secondary mt-2">
+                </div>
+                {% endif %}
+
+                <!-- Main Rating Display -->
+                <div class="col-12 mb-5">
+                    <div class="row g-4">
+                        <!-- Face Image -->
+                        <div class="col-lg-5">
+                            <div class="custom-card">
+                                <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                                    <h6 class="text-white mb-0">
+                                        <i class="bi bi-image me-2"></i>
+                                        {% if rating_data.face_count > 1 %}Face {{ person.face_id }} Analysis{% else %}Your Face Analysis{% endif %}
+                                    </h6>
+                                </div>
+                                <div class="card-body p-0">
+                                    <img src="{{ url_for('serve_processed', filename=person.highlighted_image) }}" 
+                                         alt="Face {{ person.face_id }}" class="img-fluid w-100" style="border-radius: 0 0 20px 20px;"
+                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'; this.style.objectFit='cover';">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rating Score -->
+                        <div class="col-lg-7">
+                            <div class="custom-card h-100">
+                                <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
+                                    <div class="mb-4">
+                                        <h3 class="text-white mb-2">
+                                            {% if rating_data.face_count > 1 %}Face {{ person.face_id }} Rating{% else %}Your Face Rating{% endif %}
+                                        </h3>
+                                        <div class="display-1 fw-bold text-primary-custom mb-2">
+                                            {{ person.overall_rating }}<span class="fs-3 text-secondary-custom">/10.0</span>
+                                        </div>
+                                        <h4 class="text-success mb-3">{{ person.rating_message }}</h4>
+                                        <div class="progress mb-3" style="height: 20px;">
+                                            <div class="progress-bar bg-primary-custom" role="progressbar" 
+                                                 style="width: {{ person.percentage }}%">
+                                                {{ person.percentage }}%
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Quick Stats -->
+                                    <div class="row g-3">
+                                        <div class="col-6">
+                                            <div class="custom-card p-3">
+                                                <div class="text-primary-custom fw-bold fs-4">{{ person.symmetry_score|round|int }}%</div>
+                                                <small class="text-muted-custom">Symmetry Score</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="custom-card p-3">
+                                                <div class="text-primary-custom fw-bold fs-4">
+                                                    {% if person.symmetry_score >= 80 %}
+                                                        Excellent
+                                                    {% elif person.symmetry_score >= 60 %}
+                                                        Good
+                                                    {% else %}
+                                                        Fair
+                                                    {% endif %}
+                                                </div>
+                                                <small class="text-muted-custom">Face Symmetry</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Analysis -->
+                <div class="col-12 mb-4">
+                    <div class="custom-card">
+                        <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                            <h5 class="text-white mb-0">
+                                <i class="bi bi-list-check me-2"></i>
+                                {% if rating_data.face_count > 1 %}Face {{ person.face_id }} Features Analysis{% else %}Facial Features Analysis{% endif %}
+                            </h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                {% for feature in person.feature_analysis %}
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        {% if 'too' in feature.lower() or 'bad' in feature.lower() or 'narrow' in feature.lower() or 'small' in feature.lower() %}
+                                            <i class="bi bi-exclamation-triangle text-warning me-3"></i>
+                                            <span class="text-warning">{{ feature }}</span>
+                                        {% elif 'good' in feature.lower() %}
+                                            <i class="bi bi-check-circle text-success me-3"></i>
+                                            <span class="text-success">{{ feature }}</span>
+                                        {% else %}
+                                            <i class="bi bi-info-circle text-info me-3"></i>
+                                            <span class="text-info">{{ feature }}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Measurements -->
+                <div class="col-12 mb-4">
+                    <div class="custom-card">
+                        <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                            <h5 class="text-white mb-0">
+                                <i class="bi bi-rulers me-2"></i>
+                                {% if rating_data.face_count > 1 %}Face {{ person.face_id }} Measurements & Proportions{% else %}Facial Measurements & Proportions{% endif %}
+                            </h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-white mb-3">Key Measurements</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-dark">
+                                            <tbody>
+                                                {% if person.measurements.face_width %}
+                                                <tr>
+                                                    <td class="border-end border-secondary text-secondary-custom">Face Width</td>
+                                                    <td class="text-primary-custom fw-semibold">{{ person.measurements.face_width|round(1) }}px</td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if person.measurements.face_height %}
+                                                <tr>
+                                                    <td class="border-end border-secondary text-secondary-custom">Face Height</td>
+                                                    <td class="text-primary-custom fw-semibold">{{ person.measurements.face_height|round(1) }}px</td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if person.measurements.forehead_width %}
+                                                <tr>
+                                                    <td class="border-end border-secondary text-secondary-custom">Forehead Width</td>
+                                                    <td class="text-primary-custom fw-semibold">{{ person.measurements.forehead_width|round(1) }}px</td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if person.measurements.interocular_distance %}
+                                                <tr>
+                                                    <td class="border-end border-secondary text-secondary-custom">Eye Distance</td>
+                                                    <td class="text-primary-custom fw-semibold">{{ person.measurements.interocular_distance|round(1) }}px</td>
+                                                </tr>
+                                                {% endif %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-white mb-3">Proportion Ratios</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-dark">
+                                            <tbody>
+                                                {% if person.proportions.face_ratio %}
+                                                <tr>
+                                                    <td class="border-end border-secondary text-secondary-custom">Face Ratio</td>
+                                                    <td class="text-primary-custom fw-semibold">{{ person.proportions.face_ratio|round(2) }}</td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if person.proportions.forehead_ratio %}
+                                                <tr>
+                                                    <td class="border-end border-secondary text-secondary-custom">Forehead Ratio</td>
+                                                    <td class="text-primary-custom fw-semibold">{{ person.proportions.forehead_ratio|round(2) }}</td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if person.proportions.nose_width_ratio %}
+                                                <tr>
+                                                    <td class="border-end border-secondary text-secondary-custom">Nose Width Ratio</td>
+                                                    <td class="text-primary-custom fw-semibold">{{ person.proportions.nose_width_ratio|round(2) }}</td>
+                                                </tr>
+                                                {% endif %}
+                                                {% if person.proportions.mouth_width_ratio %}
+                                                <tr>
+                                                    <td class="border-end border-secondary text-secondary-custom">Mouth Width Ratio</td>
+                                                    <td class="text-primary-custom fw-semibold">{{ person.proportions.mouth_width_ratio|round(2) }}</td>
+                                                </tr>
+                                                {% endif %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Improvement Suggestions -->
+                <div class="col-12 mb-4">
+                    <div class="custom-card">
+                        <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                            <h5 class="text-white mb-0">
+                                <i class="bi bi-lightbulb me-2"></i>
+                                {% if rating_data.face_count > 1 %}Face {{ person.face_id }} Enhancement Tips{% else %}Beauty Enhancement Tips{% endif %}
+                            </h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-success mb-3">Strong Features</h6>
+                                    <ul class="text-secondary-custom">
+                                        {% for feature in person.feature_analysis %}
+                                            {% if 'good' in feature.lower() %}
+                                                <li class="text-success">{{ feature }}</li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if person.symmetry_score >= 70 %}
+                                            <li class="text-success">Good facial symmetry</li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-warning mb-3">Areas for Enhancement</h6>
+                                    <ul class="text-secondary-custom">
+                                        {% for feature in person.feature_analysis %}
+                                            {% if 'too' in feature.lower() or 'bad' in feature.lower() or 'narrow' in feature.lower() or 'small' in feature.lower() %}
+                                                <li class="text-warning">{{ feature }}</li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if person.symmetry_score < 70 %}
+                                            <li class="text-warning">Consider facial symmetry exercises</li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Comparison Section (only show if multiple faces) -->
+        {% if rating_data.face_count > 1 %}
+        <div class="col-12 mb-4">
+            <div class="custom-card">
+                <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                    <h5 class="text-white mb-0">
+                        <i class="bi bi-bar-chart me-2"></i>Rating Comparison
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row">
+                        {% for person in rating_data.individual_ratings %}
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="custom-card p-3 text-center">
+                                <h6 class="text-white mb-2">Face {{ person.face_id }}</h6>
+                                <div class="fs-3 fw-bold text-primary-custom mb-2">{{ person.overall_rating }}/10</div>
+                                <div class="progress mb-2" style="height: 8px;">
+                                    <div class="progress-bar bg-primary-custom" style="width: {{ person.percentage }}%"></div>
+                                </div>
+                                <small class="text-secondary-custom">{{ person.rating_message }}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Download Section -->
+        <div class="col-12 mt-4">
+            <div class="custom-card text-center">
+                <div class="card-body p-4">
+                    <h6 class="text-white mb-3">Download Your Results</h6>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <a href="{{ url_for('download_analysis', filename=filename_base + '_rating.json') }}" 
+                               class="btn-primary-custom w-100 justify-content-center">
+                                <i class="bi bi-file-earmark-text me-2"></i>Complete Rating Report (JSON)
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{ url_for('serve_upload', filename=filename) }}" 
+                               class="btn-outline-custom w-100 justify-content-center" download>
+                                <i class="bi bi-download me-2"></i>Original Photo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <strong>No Rating Data Found</strong><br>
+                No faces were detected or rating analysis is missing.
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+$(document).ready(function() {
+    // Face rating tab switching functionality
+    $('#faceRatingTabs button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+        // Update face rating tab styles
+        $('#faceRatingTabs button[data-bs-toggle="tab"]').removeClass('text-primary-custom').addClass('text-secondary-custom');
+        $(e.target).removeClass('text-secondary-custom').addClass('text-primary-custom');
+    });
+
+    console.log('Face rating results page loaded');
+    console.log('Filename:', '{{ filename }}');
+    console.log('Filename base:', '{{ filename_base }}');
+    console.log('Rating data:', {{ rating_data|tojson if rating_data else '{}' }});
+    
+    // Add error handling for images
+    $('img').on('error', function() {
+        console.log('Image failed to load:', $(this).attr('src'));
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+
+{% block title %}Face Rating Tool - AI Face Shape Detector{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-white mb-4">AI Face Rating Tool</h1>
+            <p class="lead text-secondary-custom fs-5 mb-4">
+                Get your comprehensive facial attractiveness score with detailed feature analysis and professional insights.
+            </p>
+        </div>
+
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <div class="custom-card p-4 text-center">
+                    <img src="https://storage.pixocial.com/airbrush-web/3l1r9mmj1e9nyl2rfpx7f4yh.png" 
+                         alt="Face Rating Demo" class="img-fluid rounded-3" style="max-width: 100%;">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="custom-card">
+                    <div class="card-body p-4">
+                        <form id="ratingForm" enctype="multipart/form-data">
+                            <div class="upload-area" id="ratingUploadArea">
+                                <div class="upload-icon">
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <h5 class="text-white mb-3">Upload Your Photo for Rating</h5>
+                                <input type="file" class="d-none" id="ratingImageFile" name="file" accept="image/*" required>
+                                <button type="button" class="btn-primary-custom" id="ratingUploadTrigger">
+                                    <i class="bi bi-upload me-2"></i>Choose Photo
+                                </button>
+                                <p class="text-muted-custom mt-3 mb-0">
+                                    Supported: JPG, PNG, GIF, BMP, WebP (Max: 16MB)
+                                </p>
+                            </div>
+
+                            <div id="ratingImagePreview" class="mt-4 d-none">
+                                <h6 class="text-white mb-3">Preview</h6>
+                                <div class="custom-card p-3 text-center">
+                                    <img id="ratingPreviewImg" src="/placeholder.svg" alt="Preview" class="img-fluid rounded-3" style="max-height: 300px;">
+                                </div>
+                                <div class="d-grid mt-3">
+                                    <button type="submit" class="btn-primary-custom justify-content-center">
+                                        <i class="bi bi-star me-2"></i>Rate My Face
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div id="ratingLoadingState" class="text-center py-5 d-none">
+                            <div class="loading-spinner mx-auto mb-3"></div>
+                            <h5 class="text-primary-custom mb-3">Analyzing Your Face...</h5>
+                            <p class="text-secondary-custom mb-4">Please wait while we calculate your attractiveness score.</p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                     role="progressbar" style="width: 0%"></div>
+                            </div>
+                            <small class="text-muted-custom" id="ratingProgressText">Initializing analysis...</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center text-white mb-5">What We Rate</h3>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-star-fill"></i></div>
+                    <h6 class="text-white mb-3">Overall Rating</h6>
+                    <p class="text-muted-custom mb-0">Comprehensive attractiveness score from 1-10</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-symmetry-horizontal"></i></div>
+                    <h6 class="text-white mb-3">Face Symmetry</h6>
+                    <p class="text-muted-custom mb-0">Facial balance and symmetry analysis</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-rulers"></i></div>
+                    <h6 class="text-white mb-3">Proportions</h6>
+                    <p class="text-muted-custom mb-0">Golden ratio and ideal facial proportions</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="bi bi-list-check"></i></div>
+                    <h6 class="text-white mb-3">Feature Analysis</h6>
+                    <p class="text-muted-custom mb-0">Detailed breakdown of each facial feature</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Floating particles effect -->
+<div class="position-fixed top-0 start-0 w-100 h-100 overflow-hidden" style="z-index: -1; pointer-events: none;">
+    <div class="particle" style="position: absolute; width: 4px; height: 4px; background: var(--primary-orange); border-radius: 50%; opacity: 0.3; animation: float 6s ease-in-out infinite; top: 20%; left: 10%;"></div>
+    <div class="particle" style="position: absolute; width: 6px; height: 6px; background: var(--primary-orange); border-radius: 50%; opacity: 0.2; animation: float 8s ease-in-out infinite 2s; top: 60%; left: 80%;"></div>
+    <div class="particle" style="position: absolute; width: 3px; height: 3px; background: var(--primary-orange); border-radius: 50%; opacity: 0.4; animation: float 7s ease-in-out infinite 1s; top: 80%; left: 20%;"></div>
+    <div class="particle" style="position: absolute; width: 5px; height: 5px; background: var(--primary-orange); border-radius: 50%; opacity: 0.25; animation: float 9s ease-in-out infinite 3s; top: 40%; left: 70%;"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+$(document).ready(function() {
+    // Upload trigger button
+    $('#ratingUploadTrigger').click(function() {
+        $('#ratingImageFile').click();
+    });
+
+    // File input change handler
+    $('#ratingImageFile').on('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please select a valid image file.');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                $('#ratingPreviewImg').attr('src', e.target.result);
+                $('#ratingImagePreview').removeClass('d-none');
+                $('#ratingUploadArea').addClass('d-none');
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Drag and drop functionality
+    const uploadArea = $('#ratingUploadArea');
+    
+    uploadArea.on('dragover', function(e) {
+        e.preventDefault();
+        $(this).css('background', 'rgba(255, 140, 66, 0.15)');
+    });
+    
+    uploadArea.on('dragleave', function(e) {
+        e.preventDefault();
+        $(this).css('background', 'rgba(255, 140, 66, 0.05)');
+    });
+    
+    uploadArea.on('drop', function(e) {
+        e.preventDefault();
+        $(this).css('background', 'rgba(255, 140, 66, 0.05)');
+        const files = e.originalEvent.dataTransfer.files;
+        if (files.length > 0) {
+            $('#ratingImageFile')[0].files = files;
+            $('#ratingImageFile').trigger('change');
+        }
+    });
+
+    // Form submission with AJAX and proper redirect
+    $('#ratingForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        const fileInput = $('#ratingImageFile')[0];
+        if (!fileInput.files[0]) {
+            alert('Please select an image file.');
+            return;
+        }
+
+        // Show loading state
+        $('#ratingImagePreview').addClass('d-none');
+        $('#ratingLoadingState').removeClass('d-none');
+        
+        // Animate progress bar
+        let progress = 0;
+        const progressTexts = [
+            'Initializing analysis...',
+            'Detecting facial features...',
+            'Calculating proportions...',
+            'Analyzing symmetry...',
+            'Computing attractiveness score...',
+            'Generating detailed report...',
+            'Finalizing results...'
+        ];
+        
+        const progressInterval = setInterval(function() {
+            progress += Math.random() * 12 + 3;
+            if (progress > 95) progress = 95;
+            
+            $('.progress-bar').css('width', progress + '%');
+            
+            const textIndex = Math.floor((progress / 100) * (progressTexts.length - 1));
+            $('#ratingProgressText').text(progressTexts[textIndex]);
+        }, 800);
+        
+        // Create form data
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+        
+        // Submit via AJAX
+        $.ajax({
+            url: '/rate-face',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            timeout: 60000,
+            success: function(response) {
+                console.log('Rating response received:', response);
+                clearInterval(progressInterval);
+                
+                // Complete the progress bar
+                $('.progress-bar').css('width', '100%');
+                $('#ratingProgressText').text('Analysis complete! Redirecting...');
+                
+                if (response.success) {
+                    console.log('Redirecting to:', '/rating-results/' + response.filename);
+                    
+                    setTimeout(function() {
+                        window.location.href = '/rating-results/' + response.filename;
+                    }, 1500);
+                } else {
+                    console.error('Rating analysis failed:', response.message);
+                    $('#ratingLoadingState').addClass('d-none');
+                    $('#ratingImagePreview').removeClass('d-none');
+                    alert('Error: ' + (response.message || 'Rating analysis failed'));
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', { xhr: xhr, status: status, error: error });
+                clearInterval(progressInterval);
+                $('#ratingLoadingState').addClass('d-none');
+                $('#ratingImagePreview').removeClass('d-none');
+                
+                let errorMessage = 'Rating analysis failed';
+                if (status === 'timeout') {
+                    errorMessage = 'Request timed out. Please try again.';
+                } else if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                } else if (error) {
+                    errorMessage = 'Rating analysis failed: ' + error;
+                }
+                
+                alert(errorMessage);
+            }
+        });
+    });
+
+    // Reset functionality
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('#ratingImagePreview, #ratingUploadArea, #ratingUploadTrigger').length) {
+            if (!$('#ratingImagePreview').hasClass('d-none') && $('#ratingLoadingState').hasClass('d-none')) {
+                $('#ratingImagePreview').addClass('d-none');
+                $('#ratingUploadArea').removeClass('d-none');
+                $('#ratingImageFile').val('');
+            }
+        }
+    });
+
+    $('#ratingImagePreview, #ratingUploadArea').on('click', function(e) {
+        e.stopPropagation();
+    });
+});
+</script>
+{% endblock %}

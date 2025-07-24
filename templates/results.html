@@ -1,0 +1,724 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Results - AI Face Shape Detector{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="text-white mb-0">
+                <i class="bi bi-stars text-primary-custom me-3"></i>Analysis Results
+            </h2>
+            <a href="{{ url_for('index') }}" class="btn-outline-custom">
+                <i class="bi bi-arrow-left me-2"></i>Upload New
+            </a>
+        </div>
+        <hr class="border-secondary my-4">
+    </div>
+
+    {% if analysis_data %}
+        <!-- Set persons variable based on analysis_data structure -->
+        {% if analysis_data is iterable and analysis_data is not string and analysis_data|length > 0 %}
+            {% if analysis_data[0] is mapping and 'face_id' in analysis_data[0] %}
+                {% set persons = analysis_data %}
+            {% elif analysis_data[0] is mapping and 'analysis' in analysis_data[0] %}
+                {% set persons = [analysis_data[0].analysis] %}
+            {% else %}
+                {% set persons = analysis_data %}
+            {% endif %}
+        {% elif analysis_data is mapping %}
+            {% if 'analysis' in analysis_data %}
+                {% set persons = [analysis_data.analysis] %}
+            {% else %}
+                {% set persons = [analysis_data] %}
+            {% endif %}
+        {% else %}
+            {% set persons = [] %}
+        {% endif %}
+
+        <!-- Face Detection Summary -->
+        <div class="col-12 mb-4">
+            <div class="custom-card">
+                <div class="card-body p-4 text-center">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-people-fill text-primary-custom me-3" style="font-size: 2rem;"></i>
+                                <div>
+                                    <h3 class="text-primary-custom mb-0">{{ persons|length }}</h3>
+                                    <small class="text-secondary-custom">Face{{ 's' if persons|length != 1 else '' }} Detected</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-graph-up text-success me-3" style="font-size: 2rem;"></i>
+                                <div>
+                                    <h3 class="text-success mb-0">
+                                        {% set total_score = 0 %}
+                                        {% set valid_scores = 0 %}
+                                        {% for person in persons %}
+                                            {% if person.overall_score %}
+                                                {% set total_score = total_score + person.overall_score %}
+                                                {% set valid_scores = valid_scores + 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {{ (total_score / valid_scores)|round|int if valid_scores > 0 else 0 }}
+                                    </h3>
+                                    <small class="text-secondary-custom">Average Score</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="bi bi-clock text-info me-3" style="font-size: 2rem;"></i>
+                                <div>
+                                    <h3 class="text-info mb-0">Now</h3>
+                                    <small class="text-secondary-custom">Analysis Time</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Person Tabs (only show if multiple faces) -->
+        {% if persons|length > 1 %}
+        <div class="col-12 mb-4">
+            <div class="custom-card">
+                <div class="card-header bg-transparent border-bottom border-secondary p-0">
+                    <ul class="nav nav-tabs border-0" id="personTabs" role="tablist">
+                        {% for person in persons %}
+                        <li class="nav-item">
+                            <button class="nav-link {% if loop.first %}active text-primary-custom{% else %}text-secondary-custom{% endif %}" 
+                                    data-bs-toggle="tab" data-bs-target="#person{{ person.face_id or loop.index }}" 
+                                    type="button" role="tab">
+                                <i class="bi bi-person-circle me-2"></i>
+                                Person {{ person.face_id or loop.index }}
+                                {% if person.overall_score %}
+                                    <span class="badge bg-secondary ms-2">{{ person.overall_score }}/100</span>
+                                {% endif %}
+                            </button>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Person Content -->
+        <div class="tab-content" id="personTabsContent">
+            {% for person in persons %}
+            <div class="tab-pane fade {% if loop.first %}show active{% endif %}" 
+                 id="person{{ person.face_id or loop.index }}" role="tabpanel">
+                
+                <div class="row mb-4">
+                    {% if persons|length > 1 %}
+                    <div class="col-12 mb-3">
+                        <div class="d-flex align-items-center">
+                            <h4 class="text-white mb-0">
+                                <i class="bi bi-person-circle text-primary-custom me-2"></i>
+                                Person {{ person.face_id or loop.index }} Details
+                            </h4>
+                            {% if person.overall_score %}
+                                <span class="badge bg-primary-custom ms-3 fs-6">Score: {{ person.overall_score }}/100</span>
+                            {% endif %}
+                        </div>
+                        <hr class="border-secondary mt-2">
+                    </div>
+                    {% endif %}
+
+                    <div class="col-lg-4 mb-4">
+                        <div class="custom-card mb-4">
+                            <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                                <h6 class="text-white mb-0">
+                                    <i class="bi bi-image me-2"></i>
+                                    {% if person.face_id %}Face {{ person.face_id }}{% else %}Original Image{% endif %}
+                                </h6>
+                            </div>
+                            <div class="card-body p-0">
+                                {% if person.face_id %}
+                                    <img src="{{ url_for('serve_processed', filename=filename_base + '_face_' + person.face_id|string + '_original.png') }}" 
+                                         alt="Face {{ person.face_id }}" class="img-fluid w-100" style="border-radius: 0 0 20px 20px;"
+                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'; this.style.objectFit='cover';">
+                                {% else %}
+                                    <img src="{{ url_for('serve_upload', filename=filename) }}" 
+                                         alt="Original" class="img-fluid w-100" style="border-radius: 0 0 20px 20px;"
+                                         onerror="console.log('Image load error for:', this.src); this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                {% endif %}
+                                <div style="display: none; padding: 20px; text-align: center;">
+                                    <p class="text-muted-custom">Image not found: {{ filename }}</p>
+                                    <small class="text-muted-custom">Base: {{ filename_base }}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats Card -->
+                        <div class="custom-card">
+                            <div class="card-header bg-transparent border-bottom border-secondary p-3">
+                                <h6 class="text-white mb-0">
+                                    <i class="bi bi-bar-chart me-2"></i>Quick Stats
+                                </h6>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <div class="text-center p-2 bg-dark rounded">
+                                            <div class="text-primary-custom fw-bold">{{ person.face_shape.shape if person.face_shape else 'N/A' }}</div>
+                                            <small class="text-muted-custom">Face Shape</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-center p-2 bg-dark rounded">
+                                            <div class="text-primary-custom fw-bold">{{ person.eyes.characteristics.shape if person.eyes and person.eyes.characteristics else 'N/A' }}</div>
+                                            <small class="text-muted-custom">Eye Shape</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-center p-2 bg-dark rounded">
+                                            <div class="text-primary-custom fw-bold">{{ person.nose.characteristics.shape if person.nose and person.nose.characteristics else 'N/A' }}</div>
+                                            <small class="text-muted-custom">Nose Shape</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-center p-2 bg-dark rounded">
+                                            <div class="text-primary-custom fw-bold">{{ person.lips.characteristics.shape if person.lips and person.lips.characteristics else 'N/A' }}</div>
+                                            <small class="text-muted-custom">Lip Shape</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="custom-card">
+                            <div class="card-header bg-transparent border-bottom border-secondary p-0">
+                                <ul class="nav nav-tabs border-0" id="analysisTab{{ person.face_id or loop.index }}" role="tablist">
+                                    <li class="nav-item">
+                                        <button class="nav-link active text-primary-custom" data-bs-toggle="tab" data-bs-target="#shape{{ person.face_id or loop.index }}">
+                                            <i class="bi bi-person-circle me-2"></i>Shape
+                                        </button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link text-secondary-custom" data-bs-toggle="tab" data-bs-target="#eyes{{ person.face_id or loop.index }}">
+                                            <i class="bi bi-eye me-2"></i>Eyes
+                                        </button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link text-secondary-custom" data-bs-toggle="tab" data-bs-target="#brows{{ person.face_id or loop.index }}">
+                                            <i class="bi bi-chevron-up me-2"></i>Brows
+                                        </button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link text-secondary-custom" data-bs-toggle="tab" data-bs-target="#lips{{ person.face_id or loop.index }}">
+                                            <i class="bi bi-chat-heart me-2"></i>Lips
+                                        </button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link text-secondary-custom" data-bs-toggle="tab" data-bs-target="#nose{{ person.face_id or loop.index }}">
+                                            <i class="bi bi-triangle me-2"></i>Nose
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body p-4">
+                                <div class="tab-content">
+                                    <!-- Face Shape Tab -->
+                                    <div class="tab-pane fade show active" id="shape{{ person.face_id or loop.index }}">
+                                        <div class="d-flex align-items-center mb-4">
+                                            {% if person.face_id %}
+                                                <img src="{{ url_for('serve_processed', filename=filename_base + '_face_' + person.face_id|string + '_face_outline.png') }}" 
+                                                     alt="Face shape" class="rounded-circle me-4" style="width: 80px; height: 80px;"
+                                                     onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'; this.style.width='80px'; this.style.height='80px'; this.style.objectFit='cover';">
+                                            {% else %}
+                                                <img src="{{ url_for('serve_processed', filename=filename_base + '_face_1_face_outline.png') }}" 
+                                                     alt="Face shape" class="rounded-circle me-4" style="width: 80px; height: 80px;"
+                                                     onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'; this.style.width='80px'; this.style.height='80px'; this.style.objectFit='cover';">
+                                            {% endif %}
+                                            <div>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <span class="text-white fs-5 fw-semibold me-2">Face Shape:</span>
+                                                    <span class="text-primary-custom fs-5 fw-bold">
+                                                        {{ person.face_shape.shape if person.face_shape else 'Oval' }}
+                                                    </span>
+                                                </div>
+                                                <p class="text-secondary-custom mb-0 small">
+                                                    {{ person.face_shape.description if person.face_shape else 'You have balanced facial proportions with gentle curves.' }}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Measurements Table -->
+                                        <div class="custom-card mb-4">
+                                            <table class="table table-dark mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="border-end border-secondary text-secondary-custom">Chin</td>
+                                                        <td class="text-primary-custom fw-semibold">
+                                                            {{ person.face_shape.characteristics.chin if person.face_shape and person.face_shape.characteristics else 'Rounded' }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border-end border-secondary text-secondary-custom">Cheekbone</td>
+                                                        <td class="text-primary-custom fw-semibold">
+                                                            {{ person.face_shape.characteristics.cheekbone if person.face_shape and person.face_shape.characteristics else 'High' }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="border-end border-secondary text-secondary-custom">Temple</td>
+                                                        <td class="text-primary-custom fw-semibold">
+                                                            {{ person.face_shape.characteristics.temple if person.face_shape and person.face_shape.characteristics else 'Normal' }}
+                                                        </td>
+                                                    </tr>
+                                                    {% if person.face_shape and person.face_shape.measurements and person.face_shape.measurements.width_to_length_ratio %}
+                                                    <tr>
+                                                        <td class="border-end border-secondary text-secondary-custom">Width/Length Ratio</td>
+                                                        <td class="text-primary-custom fw-semibold">
+                                                            {{ "%.2f"|format(person.face_shape.measurements.width_to_length_ratio) }}
+                                                        </td>
+                                                    </tr>
+                                                    {% endif %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!-- Recommendations -->
+                                        {% if person.face_shape and person.face_shape.recommendations %}
+                                        <div class="custom-card">
+                                            <div class="card-body p-3">
+                                                <h6 class="text-white mb-3">Recommendations</h6>
+                                                <ul class="text-secondary-custom mb-0">
+                                                    {% for recommendation in person.face_shape.recommendations %}
+                                                    <li>{{ recommendation }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <!-- Eyes Tab -->
+                                    <div class="tab-pane fade" id="eyes{{ person.face_id or loop.index }}">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5 class="text-white mb-3">Eye Analysis</h5>
+                                                <p class="text-secondary-custom mb-4">
+                                                    {{ person.eyes.description if person.eyes else 'Detailed analysis of eye shape, size, and spacing characteristics.' }}
+                                                </p>
+                                                
+                                                {% if person.eyes and person.eyes.characteristics %}
+                                                <div class="mb-4">
+                                                    <h6 class="text-white mb-3">Characteristics</h6>
+                                                    <div class="row g-3">
+                                                        {% if person.eyes.characteristics.size %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.eyes.characteristics.size }}</div>
+                                                                <small class="text-muted-custom">Size</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.eyes.characteristics.shape %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.eyes.characteristics.shape }}</div>
+                                                                <small class="text-muted-custom">Shape</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.eyes.characteristics.spacing %}
+                                                        <div class="col-12">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.eyes.characteristics.spacing }}</div>
+                                                                <small class="text-muted-custom">Spacing</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                
+                                                {% if person.eyes and person.eyes.measurements %}
+                                                <div class="mb-3">
+                                                    <h6 class="text-white mb-3">Measurements</h6>
+                                                    <div class="custom-card">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-dark mb-0">
+                                                                <tbody>
+                                                                    {% if person.eyes.measurements.distance %}
+                                                                    <tr>
+                                                                        <td class="border-end border-secondary text-secondary-custom">Distance</td>
+                                                                        <td class="text-primary-custom fw-semibold">{{ person.eyes.measurements.distance }}px</td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                    {% if person.eyes.measurements.avg_width %}
+                                                                    <tr>
+                                                                        <td class="border-end border-secondary text-secondary-custom">Avg Width</td>
+                                                                        <td class="text-primary-custom fw-semibold">{{ person.eyes.measurements.avg_width }}px</td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                    {% if person.eyes.measurements.avg_height %}
+                                                                    <tr>
+                                                                        <td class="border-end border-secondary text-secondary-custom">Avg Height</td>
+                                                                        <td class="text-primary-custom fw-semibold">{{ person.eyes.measurements.avg_height }}px</td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% if person.face_id %}
+                                                    <img src="{{ url_for('serve_processed', filename=filename_base + '_face_' + person.face_id|string + '_eyes.png') }}" 
+                                                         alt="Eyes" class="img-fluid rounded-3 border border-secondary" 
+                                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'">
+                                                {% else %}
+                                                    <img src="{{ url_for('serve_processed', filename=filename_base + '_face_1_eyes.png') }}" 
+                                                         alt="Eyes" class="img-fluid rounded-3 border border-secondary" 
+                                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Eyebrows Tab -->
+                                    <div class="tab-pane fade" id="brows{{ person.face_id or loop.index }}">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5 class="text-white mb-3">Eyebrow Analysis</h5>
+                                                <p class="text-secondary-custom mb-4">
+                                                    {{ person.eyebrows.description if person.eyebrows else 'Comprehensive eyebrow shape and thickness analysis.' }}
+                                                </p>
+                                                
+                                                {% if person.eyebrows and person.eyebrows.characteristics %}
+                                                <div class="mb-4">
+                                                    <h6 class="text-white mb-3">Characteristics</h6>
+                                                    <div class="row g-3">
+                                                        {% if person.eyebrows.characteristics.thickness %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.eyebrows.characteristics.thickness }}</div>
+                                                                <small class="text-muted-custom">Thickness</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.eyebrows.characteristics.arch %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.eyebrows.characteristics.arch }}</div>
+                                                                <small class="text-muted-custom">Arch</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.eyebrows.characteristics.spacing %}
+                                                        <div class="col-12">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.eyebrows.characteristics.spacing }}</div>
+                                                                <small class="text-muted-custom">Spacing</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                
+                                                {% if person.eyebrows and person.eyebrows.measurements %}
+                                                <div class="mb-3">
+                                                    <h6 class="text-white mb-3">Measurements</h6>
+                                                    <div class="custom-card">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-dark mb-0">
+                                                                <tbody>
+                                                                    {% if person.eyebrows.measurements.length %}
+                                                                    <tr>
+                                                                        <td class="border-end border-secondary text-secondary-custom">Length</td>
+                                                                        <td class="text-primary-custom fw-semibold">{{ person.eyebrows.measurements.length }}px</td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                    {% if person.eyebrows.measurements.spacing %}
+                                                                    <tr>
+                                                                        <td class="border-end border-secondary text-secondary-custom">Spacing</td>
+                                                                        <td class="text-primary-custom fw-semibold">{{ person.eyebrows.measurements.spacing }}px</td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% if person.face_id %}
+                                                    <img src="{{ url_for('serve_processed', filename=filename_base + '_face_' + person.face_id|string + '_eyebrows.png') }}" 
+                                                         alt="Eyebrows" class="img-fluid rounded-3 border border-secondary" 
+                                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'">
+                                                {% else %}
+                                                    <img src="{{ url_for('serve_processed', filename=filename_base + '_face_1_eyebrows.png') }}" 
+                                                         alt="Eyebrows" class="img-fluid rounded-3 border border-secondary" 
+                                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Lips Tab -->
+                                    <div class="tab-pane fade" id="lips{{ person.face_id or loop.index }}">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5 class="text-white mb-3">Lip Analysis</h5>
+                                                <p class="text-secondary-custom mb-4">
+                                                    {{ person.lips.description if person.lips else 'Detailed lip shape, fullness, and proportion analysis.' }}
+                                                </p>
+                                                
+                                                {% if person.lips and person.lips.characteristics %}
+                                                <div class="mb-4">
+                                                    <h6 class="text-white mb-3">Characteristics</h6>
+                                                    <div class="row g-3">
+                                                        {% if person.lips.characteristics.width %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.lips.characteristics.width }}</div>
+                                                                <small class="text-muted-custom">Width</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.lips.characteristics.thickness %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.lips.characteristics.thickness }}</div>
+                                                                <small class="text-muted-custom">Thickness</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.lips.characteristics.shape %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.lips.characteristics.shape }}</div>
+                                                                <small class="text-muted-custom">Shape</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.lips.characteristics.cupid_bow %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.lips.characteristics.cupid_bow }}</div>
+                                                                <small class="text-muted-custom">Cupid Bow</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                
+                                                {% if person.lips and person.lips.measurements %}
+                                                <div class="mb-3">
+                                                    <h6 class="text-white mb-3">Measurements</h6>
+                                                    <div class="custom-card">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-dark mb-0">
+                                                                <tbody>
+                                                                    {% if person.lips.measurements.width %}
+                                                                    <tr>
+                                                                        <td class="border-end border-secondary text-secondary-custom">Width</td>
+                                                                        <td class="text-primary-custom fw-semibold">{{ person.lips.measurements.width }}px</td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                    {% if person.lips.measurements.height %}
+                                                                    <tr>
+                                                                        <td class="border-end border-secondary text-secondary-custom">Height</td>
+                                                                        <td class="text-primary-custom fw-semibold">{{ person.lips.measurements.height }}px</td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% if person.face_id %}
+                                                    <img src="{{ url_for('serve_processed', filename=filename_base + '_face_' + person.face_id|string + '_lips.png') }}" 
+                                                         alt="Lips" class="img-fluid rounded-3 border border-secondary" 
+                                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'">
+                                                {% else %}
+                                                    <img src="{{ url_for('serve_processed', filename=filename_base + '_face_1_lips.png') }}" 
+                                                         alt="Lips" class="img-fluid rounded-3 border border-secondary" 
+                                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Nose Tab -->
+                                    <div class="tab-pane fade" id="nose{{ person.face_id or loop.index }}">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5 class="text-white mb-3">Nose Analysis</h5>
+                                                <p class="text-secondary-custom mb-4">
+                                                    {{ person.nose.description if person.nose else 'Comprehensive nose shape, width, and proportion analysis.' }}
+                                                </p>
+                                                
+                                                {% if person.nose and person.nose.characteristics %}
+                                                <div class="mb-4">
+                                                    <h6 class="text-white mb-3">Characteristics</h6>
+                                                    <div class="row g-3">
+                                                        {% if person.nose.characteristics.width %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.nose.characteristics.width }}</div>
+                                                                <small class="text-muted-custom">Width</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.nose.characteristics.length %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.nose.characteristics.length }}</div>
+                                                                <small class="text-muted-custom">Length</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.nose.characteristics.shape %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.nose.characteristics.shape }}</div>
+                                                                <small class="text-muted-custom">Shape</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if person.nose.characteristics.bridge %}
+                                                        <div class="col-6">
+                                                            <div class="custom-card p-3 text-center">
+                                                                <div class="text-primary-custom fw-bold">{{ person.nose.characteristics.bridge }}</div>
+                                                                <small class="text-muted-custom">Bridge</small>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                                
+                                                {% if person.nose and person.nose.measurements %}
+                                                <div class="mb-3">
+                                                    <h6 class="text-white mb-3">Measurements</h6>
+                                                    <div class="custom-card">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-dark mb-0">
+                                                                <tbody>
+                                                                    {% if person.nose.measurements.width %}
+                                                                    <tr>
+                                                                        <td class="border-end border-secondary text-secondary-custom">Width</td>
+                                                                        <td class="text-primary-custom fw-semibold">{{ person.nose.measurements.width }}px</td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                    {% if person.nose.measurements.height %}
+                                                                    <tr>
+                                                                        <td class="border-end border-secondary text-secondary-custom">Height</td>
+                                                                        <td class="text-primary-custom fw-semibold">{{ person.nose.measurements.height }}px</td>
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% if person.face_id %}
+                                                    <img src="{{ url_for('serve_processed', filename=filename_base + '_face_' + person.face_id|string + '_nose.png') }}" 
+                                                         alt="Nose" class="img-fluid rounded-3 border border-secondary" 
+                                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'">
+                                                {% else %}
+                                                    <img src="{{ url_for('serve_processed', filename=filename_base + '_face_1_nose.png') }}" 
+                                                         alt="Nose" class="img-fluid rounded-3 border border-secondary" 
+                                                         onerror="this.src='{{ url_for('serve_upload', filename=filename) }}'">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Download Section -->
+        <div class="col-12 mt-5">
+            <div class="custom-card text-center">
+                <div class="card-body p-4">
+                    <h6 class="text-white mb-3">Download Analysis Results</h6>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <a href="{{ url_for('download_analysis', filename=filename_base + '_analysis.json') }}" 
+                               class="btn-primary-custom w-100 justify-content-center">
+                                <i class="bi bi-file-earmark-text me-2"></i>Complete Analysis Data
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{ url_for('serve_upload', filename=filename) }}" 
+                               class="btn-outline-custom w-100 justify-content-center" download>
+                                <i class="bi bi-download me-2"></i>Original Image
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <strong>No Analysis Data Found</strong><br>
+                No faces were detected or analysis data is missing.
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+$(document).ready(function() {
+    // Person tab switching functionality
+    $('#personTabs button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+        // Update person tab styles
+        $('#personTabs button[data-bs-toggle="tab"]').removeClass('text-primary-custom').addClass('text-secondary-custom');
+        $(e.target).removeClass('text-secondary-custom').addClass('text-primary-custom');
+    });
+
+    // Feature tab switching functionality for each person
+    $('button[data-bs-toggle="tab"]:not(#personTabs button)').on('shown.bs.tab', function(e) {
+        // Get the parent tab container
+        var tabContainer = $(e.target).closest('.nav-tabs');
+        
+        // Update active tab styles within this container only
+        tabContainer.find('button[data-bs-toggle="tab"]').removeClass('text-primary-custom').addClass('text-secondary-custom');
+        $(e.target).removeClass('text-secondary-custom').addClass('text-primary-custom');
+    });
+
+    // Debug information
+    console.log('Multi-person results page loaded');
+    console.log('Filename:', '{{ filename }}');
+    console.log('Filename base:', '{{ filename_base }}');
+    console.log('Analysis data:', {{ analysis_data|tojson if analysis_data else '[]' }});
+    
+    // Add error handling for images
+    $('img').on('error', function() {
+        console.log('Image failed to load:', $(this).attr('src'));
+    });
+});
+</script>
+{% endblock %}

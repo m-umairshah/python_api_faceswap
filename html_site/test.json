@@ -1,0 +1,2439 @@
+{
+  "data": {
+    "analysis_results": [
+      {
+        "bbox": [
+          33,
+          50,
+          167,
+          185
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 23.1,
+            "spacing": 9.1
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 3.1,
+            "avg_width": 12.1,
+            "distance": 17,
+            "left_width": 11,
+            "right_width": 13.2
+          }
+        },
+        "face_id": 1,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 33.2,
+            "jaw_width": 41,
+            "length": 68,
+            "width": 68.6,
+            "width_to_length_ratio": 1.01
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 2,
+            "lower_height": 10.8,
+            "upper_height": 15.3,
+            "width": 33.1,
+            "width_ratio": 16.53
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 17,
+            "height": 25.3,
+            "width": 17,
+            "width_ratio": 0.67
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          821,
+          622,
+          955,
+          757
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 23,
+            "spacing": 13
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 3.5,
+            "avg_width": 13.1,
+            "distance": 19,
+            "left_width": 13,
+            "right_width": 13.2
+          }
+        },
+        "face_id": 2,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 37,
+            "jaw_width": 48,
+            "length": 76.5,
+            "width": 69.1,
+            "width_to_length_ratio": 0.9
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3,
+            "lower_height": 13,
+            "upper_height": 15.8,
+            "width": 34.1,
+            "width_ratio": 11.35
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 15,
+            "height": 28.1,
+            "width": 15,
+            "width_ratio": 0.54
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          613,
+          823,
+          763,
+          972
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 25.1,
+            "spacing": 12
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 4.1,
+            "avg_width": 13.7,
+            "distance": 20,
+            "left_width": 13.2,
+            "right_width": 14.3
+          }
+        },
+        "face_id": 3,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 38,
+            "jaw_width": 48,
+            "length": 75.6,
+            "width": 74,
+            "width_to_length_ratio": 0.98
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 2,
+            "lower_height": 10.3,
+            "upper_height": 13.9,
+            "width": 36,
+            "width_ratio": 18.01
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 15,
+            "height": 29,
+            "width": 15,
+            "width_ratio": 0.52
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          802,
+          803,
+          952,
+          952
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 29.8,
+            "spacing": 11.4
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 2.7,
+            "avg_width": 14.7,
+            "distance": 21.4,
+            "left_width": 14.3,
+            "right_width": 15
+          }
+        },
+        "face_id": 4,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 44.6,
+            "jaw_width": 56,
+            "length": 82.9,
+            "width": 77.2,
+            "width_to_length_ratio": 0.93
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 2.2,
+            "lower_height": 11.7,
+            "upper_height": 18.4,
+            "width": 40.3,
+            "width_ratio": 18.03
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Low bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Low bridge.",
+          "measurements": {
+            "bridge_width": 17.1,
+            "height": 25.1,
+            "width": 17.1,
+            "width_ratio": 0.68
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          225,
+          813,
+          374,
+          962
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 23.8,
+            "spacing": 15.1
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 4.1,
+            "avg_width": 14.2,
+            "distance": 19.2,
+            "left_width": 14.3,
+            "right_width": 14
+          }
+        },
+        "face_id": 5,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 39.2,
+            "jaw_width": 48.5,
+            "length": 77.1,
+            "width": 73.7,
+            "width_to_length_ratio": 0.96
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3.2,
+            "lower_height": 13.9,
+            "upper_height": 17,
+            "width": 35.4,
+            "width_ratio": 11.18
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 15.1,
+            "height": 25.1,
+            "width": 15.1,
+            "width_ratio": 0.6
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          812,
+          241,
+          947,
+          375
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 25.3,
+            "spacing": 13
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 4.1,
+            "avg_width": 14.6,
+            "distance": 19,
+            "left_width": 14.1,
+            "right_width": 15
+          }
+        },
+        "face_id": 6,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 41,
+            "jaw_width": 50.4,
+            "length": 78.9,
+            "width": 73.7,
+            "width_to_length_ratio": 0.93
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3,
+            "lower_height": 11.7,
+            "upper_height": 15.6,
+            "width": 34.1,
+            "width_ratio": 11.38
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 16,
+            "height": 27.1,
+            "width": 16,
+            "width_ratio": 0.59
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          431,
+          232,
+          566,
+          367
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 22.5,
+            "spacing": 14
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 2.6,
+            "avg_width": 13,
+            "distance": 19,
+            "left_width": 12,
+            "right_width": 14
+          }
+        },
+        "face_id": 7,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 38.1,
+            "jaw_width": 50,
+            "length": 75.9,
+            "width": 73.1,
+            "width_to_length_ratio": 0.96
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 2,
+            "lower_height": 12.1,
+            "upper_height": 15.6,
+            "width": 34,
+            "width_ratio": 17.01
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 14,
+            "height": 26.1,
+            "width": 14,
+            "width_ratio": 0.54
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          36,
+          215,
+          185,
+          365
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 24.5,
+            "spacing": 18.1
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Wide"
+          },
+          "description": "You have small, almond-shaped eyes with wide spacing.",
+          "measurements": {
+            "avg_height": 3,
+            "avg_width": 14.1,
+            "distance": 22.1,
+            "left_width": 13.2,
+            "right_width": 15
+          }
+        },
+        "face_id": 8,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 44.2,
+            "jaw_width": 55.1,
+            "length": 86.1,
+            "width": 83,
+            "width_to_length_ratio": 0.96
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3.2,
+            "lower_height": 17.1,
+            "upper_height": 21.3,
+            "width": 38.1,
+            "width_ratio": 12.03
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 15,
+            "height": 25,
+            "width": 15,
+            "width_ratio": 0.6
+          }
+        },
+        "overall_score": 20
+      },
+      {
+        "bbox": [
+          240,
+          33,
+          375,
+          168
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 25,
+            "spacing": 12.2
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Oval",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, oval-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 5,
+            "avg_width": 13.6,
+            "distance": 19.1,
+            "left_width": 13.2,
+            "right_width": 14
+          }
+        },
+        "face_id": 9,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 38.2,
+            "jaw_width": 50.2,
+            "length": 76,
+            "width": 70.5,
+            "width_to_length_ratio": 0.93
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3,
+            "lower_height": 12.5,
+            "upper_height": 16.3,
+            "width": 36.1,
+            "width_ratio": 12.04
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 14,
+            "height": 27.1,
+            "width": 14,
+            "width_ratio": 0.52
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          623,
+          36,
+          773,
+          186
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 27.4,
+            "spacing": 14
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Wide"
+          },
+          "description": "You have small, almond-shaped eyes with wide spacing.",
+          "measurements": {
+            "avg_height": 2.5,
+            "avg_width": 15.1,
+            "distance": 23,
+            "left_width": 15,
+            "right_width": 15.1
+          }
+        },
+        "face_id": 10,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 43,
+            "jaw_width": 52,
+            "length": 80.5,
+            "width": 81,
+            "width_to_length_ratio": 1.01
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 4,
+            "lower_height": 15.2,
+            "upper_height": 20.5,
+            "width": 44,
+            "width_ratio": 11
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 22,
+            "height": 27,
+            "width": 22,
+            "width_ratio": 0.81
+          }
+        },
+        "overall_score": 20
+      },
+      {
+        "bbox": [
+          33,
+          622,
+          167,
+          757
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 20.2,
+            "spacing": 16.1
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Wide"
+          },
+          "description": "You have small, almond-shaped eyes with wide spacing.",
+          "measurements": {
+            "avg_height": 2.7,
+            "avg_width": 12.2,
+            "distance": 20.1,
+            "left_width": 12,
+            "right_width": 12.4
+          }
+        },
+        "face_id": 11,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 37.3,
+            "jaw_width": 48,
+            "length": 78,
+            "width": 71.4,
+            "width_to_length_ratio": 0.92
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3,
+            "lower_height": 10.4,
+            "upper_height": 17.9,
+            "width": 37.2,
+            "width_ratio": 12.41
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 15.1,
+            "height": 25.1,
+            "width": 15.1,
+            "width_ratio": 0.6
+          }
+        },
+        "overall_score": 20
+      },
+      {
+        "bbox": [
+          424,
+          813,
+          574,
+          962
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 25.3,
+            "spacing": 11
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Wide"
+          },
+          "description": "You have small, almond-shaped eyes with wide spacing.",
+          "measurements": {
+            "avg_height": 3.1,
+            "avg_width": 13,
+            "distance": 20,
+            "left_width": 13,
+            "right_width": 13
+          }
+        },
+        "face_id": 12,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 39.1,
+            "jaw_width": 53,
+            "length": 80.7,
+            "width": 74.1,
+            "width_to_length_ratio": 0.92
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 2,
+            "lower_height": 12.1,
+            "upper_height": 17.2,
+            "width": 38,
+            "width_ratio": 19.01
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 17,
+            "height": 30.1,
+            "width": 17,
+            "width_ratio": 0.57
+          }
+        },
+        "overall_score": 20
+      },
+      {
+        "bbox": [
+          623,
+          424,
+          773,
+          574
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 25.2,
+            "spacing": 14
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 4.2,
+            "avg_width": 14.8,
+            "distance": 19.1,
+            "left_width": 15.5,
+            "right_width": 14
+          }
+        },
+        "face_id": 13,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 41.2,
+            "jaw_width": 46.1,
+            "length": 76,
+            "width": 70.7,
+            "width_to_length_ratio": 0.93
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Balanced",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a balanced shape.",
+          "measurements": {
+            "height": 2,
+            "lower_height": 11.4,
+            "upper_height": 12.8,
+            "width": 36.1,
+            "width_ratio": 18.03
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 17,
+            "height": 28.1,
+            "width": 17,
+            "width_ratio": 0.61
+          }
+        },
+        "overall_score": 40
+      },
+      {
+        "bbox": [
+          36,
+          405,
+          185,
+          554
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 25.7,
+            "spacing": 13
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 4.1,
+            "avg_width": 14.1,
+            "distance": 21.1,
+            "left_width": 13.2,
+            "right_width": 15
+          }
+        },
+        "face_id": 14,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 43.3,
+            "jaw_width": 54,
+            "length": 79.7,
+            "width": 77.4,
+            "width_to_length_ratio": 0.97
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3,
+            "lower_height": 6.7,
+            "upper_height": 12.8,
+            "width": 31.1,
+            "width_ratio": 10.35
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 16,
+            "height": 24.2,
+            "width": 16,
+            "width_ratio": 0.66
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          424,
+          36,
+          574,
+          186
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 25.7,
+            "spacing": 12.4
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Wide"
+          },
+          "description": "You have small, almond-shaped eyes with wide spacing.",
+          "measurements": {
+            "avg_height": 2.7,
+            "avg_width": 13.1,
+            "distance": 20.1,
+            "left_width": 13,
+            "right_width": 13.2
+          }
+        },
+        "face_id": 15,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 39.5,
+            "jaw_width": 45.2,
+            "length": 83.5,
+            "width": 75.4,
+            "width_to_length_ratio": 0.9
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Balanced",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a balanced shape.",
+          "measurements": {
+            "height": 2.2,
+            "lower_height": 13.9,
+            "upper_height": 15.8,
+            "width": 34.1,
+            "width_ratio": 15.26
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 18,
+            "height": 29.1,
+            "width": 18,
+            "width_ratio": 0.62
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          424,
+          424,
+          574,
+          574
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 29.1,
+            "spacing": 11.2
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Wide"
+          },
+          "description": "You have small, almond-shaped eyes with wide spacing.",
+          "measurements": {
+            "avg_height": 3.1,
+            "avg_width": 13.6,
+            "distance": 23.1,
+            "left_width": 13.2,
+            "right_width": 14.1
+          }
+        },
+        "face_id": 16,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 42.4,
+            "jaw_width": 55.3,
+            "length": 83.2,
+            "width": 79.5,
+            "width_to_length_ratio": 0.96
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 2,
+            "lower_height": 12.1,
+            "upper_height": 15.3,
+            "width": 39.2,
+            "width_ratio": 19.6
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 21.2,
+            "height": 28.2,
+            "width": 21.2,
+            "width_ratio": 0.75
+          }
+        },
+        "overall_score": 20
+      },
+      {
+        "bbox": [
+          232,
+          241,
+          367,
+          375
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 22,
+            "spacing": 10
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Wide"
+          },
+          "description": "You have small, almond-shaped eyes with wide spacing.",
+          "measurements": {
+            "avg_height": 2.5,
+            "avg_width": 12,
+            "distance": 19,
+            "left_width": 12,
+            "right_width": 12
+          }
+        },
+        "face_id": 17,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 33,
+            "jaw_width": 45,
+            "length": 75.2,
+            "width": 68,
+            "width_to_length_ratio": 0.9
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Balanced",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a balanced shape.",
+          "measurements": {
+            "height": 1,
+            "lower_height": 14.3,
+            "upper_height": 14.9,
+            "width": 36,
+            "width_ratio": 36.01
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 18,
+            "height": 26,
+            "width": 18,
+            "width_ratio": 0.69
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          623,
+          634,
+          773,
+          783
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 31.6,
+            "spacing": 10.2
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Wide"
+          },
+          "description": "You have small, almond-shaped eyes with wide spacing.",
+          "measurements": {
+            "avg_height": 3.6,
+            "avg_width": 15.3,
+            "distance": 23,
+            "left_width": 15,
+            "right_width": 15.5
+          }
+        },
+        "face_id": 18,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 42.2,
+            "jaw_width": 55.1,
+            "length": 74,
+            "width": 81.1,
+            "width_to_length_ratio": 1.1
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3,
+            "lower_height": 7.1,
+            "upper_height": 12.4,
+            "width": 41.1,
+            "width_ratio": 13.7
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 21.1,
+            "height": 27,
+            "width": 21.1,
+            "width_ratio": 0.78
+          }
+        },
+        "overall_score": 20
+      },
+      {
+        "bbox": [
+          802,
+          36,
+          952,
+          186
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Close spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Close spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 28.7,
+            "spacing": 7.3
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Oval",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, oval-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 5,
+            "avg_width": 14.1,
+            "distance": 20,
+            "left_width": 13,
+            "right_width": 15.1
+          }
+        },
+        "face_id": 19,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 39.1,
+            "jaw_width": 56.7,
+            "length": 77.6,
+            "width": 76.5,
+            "width_to_length_ratio": 0.99
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 1,
+            "lower_height": 9.4,
+            "upper_height": 14.9,
+            "width": 34.4,
+            "width_ratio": 34.37
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 17.3,
+            "height": 25.3,
+            "width": 17.3,
+            "width_ratio": 0.68
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          232,
+          440,
+          367,
+          574
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 25.1,
+            "spacing": 9.1
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Wide"
+          },
+          "description": "You have small, almond-shaped eyes with wide spacing.",
+          "measurements": {
+            "avg_height": 3.1,
+            "avg_width": 12.5,
+            "distance": 19,
+            "left_width": 12,
+            "right_width": 13
+          }
+        },
+        "face_id": 20,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 34,
+            "jaw_width": 44.1,
+            "length": 69.9,
+            "width": 69,
+            "width_to_length_ratio": 0.99
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 1,
+            "lower_height": 10.8,
+            "upper_height": 15.3,
+            "width": 35,
+            "width_ratio": 35.01
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 17,
+            "height": 25,
+            "width": 17,
+            "width_ratio": 0.68
+          }
+        },
+        "overall_score": 20
+      },
+      {
+        "bbox": [
+          821,
+          440,
+          955,
+          574
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 26.6,
+            "spacing": 13.2
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 4,
+            "avg_width": 14.5,
+            "distance": 21.1,
+            "left_width": 14,
+            "right_width": 15
+          }
+        },
+        "face_id": 21,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 43.1,
+            "jaw_width": 51.2,
+            "length": 77.9,
+            "width": 73.2,
+            "width_to_length_ratio": 0.94
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3,
+            "lower_height": 9.2,
+            "upper_height": 14.2,
+            "width": 37.1,
+            "width_ratio": 12.37
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 17.1,
+            "height": 27.1,
+            "width": 17.1,
+            "width_ratio": 0.63
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          630,
+          249,
+          765,
+          384
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 25.2,
+            "spacing": 11
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 3.1,
+            "avg_width": 14.1,
+            "distance": 19.2,
+            "left_width": 14.1,
+            "right_width": 14
+          }
+        },
+        "face_id": 22,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 37.1,
+            "jaw_width": 45.1,
+            "length": 71,
+            "width": 70.5,
+            "width_to_length_ratio": 0.99
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 2,
+            "lower_height": 11.7,
+            "upper_height": 15.6,
+            "width": 37.1,
+            "width_ratio": 18.56
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 19.1,
+            "height": 28.1,
+            "width": 19.1,
+            "width_ratio": 0.68
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          414,
+          614,
+          564,
+          763
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 23.6,
+            "spacing": 8.1
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Almond",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, almond-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 3.2,
+            "avg_width": 12.9,
+            "distance": 16.2,
+            "left_width": 11.2,
+            "right_width": 14.6
+          }
+        },
+        "face_id": 23,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 32.3,
+            "jaw_width": 48,
+            "length": 73.8,
+            "width": 73.8,
+            "width_to_length_ratio": 1
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 3.2,
+            "lower_height": 10,
+            "upper_height": 16.2,
+            "width": 30.4,
+            "width_ratio": 9.6
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "Medium bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and Medium bridge.",
+          "measurements": {
+            "bridge_width": 15.5,
+            "height": 26.5,
+            "width": 15.5,
+            "width_ratio": 0.59
+          }
+        },
+        "overall_score": 30
+      },
+      {
+        "bbox": [
+          225,
+          643,
+          374,
+          793
+        ],
+        "eyebrows": {
+          "characteristics": {
+            "arch": "Straight",
+            "spacing": "Wide spacing",
+            "thickness": "Thin"
+          },
+          "description": "You have thin eyebrows with straight arch and Wide spacing.",
+          "measurements": {
+            "height": 0,
+            "length": 29.7,
+            "spacing": 12.2
+          }
+        },
+        "eyes": {
+          "characteristics": {
+            "shape": "Oval",
+            "size": "Small",
+            "spacing": "Average"
+          },
+          "description": "You have small, oval-shaped eyes with average spacing.",
+          "measurements": {
+            "avg_height": 5.6,
+            "avg_width": 15.6,
+            "distance": 23.1,
+            "left_width": 15.3,
+            "right_width": 16
+          }
+        },
+        "face_id": 24,
+        "face_shape": {
+          "characteristics": {
+            "apple_cheeks": "Prominent",
+            "cheekbone": "High",
+            "chin": "Square",
+            "temple": "Normal"
+          },
+          "description": "You have a square face with strong, defined angles.",
+          "measurements": {
+            "forehead_width": 43.2,
+            "jaw_width": 50,
+            "length": 82.2,
+            "width": 81.2,
+            "width_to_length_ratio": 0.99
+          },
+          "recommendations": [
+            "Soften angles with rounded frames",
+            "Add width to upper face",
+            "Avoid sharp, angular styles"
+          ],
+          "shape": "Square"
+        },
+        "lips": {
+          "characteristics": {
+            "cupid_bow": "Subtle",
+            "shape": "Top-heavy",
+            "thickness": "Thin",
+            "width": "Narrow"
+          },
+          "description": "You have narrow, thin lips with a top-heavy shape.",
+          "measurements": {
+            "height": 1,
+            "lower_height": 10.6,
+            "upper_height": 13,
+            "width": 35.1,
+            "width_ratio": 35.06
+          }
+        },
+        "nose": {
+          "characteristics": {
+            "bridge": "High bridge",
+            "length": "Short",
+            "shape": "Straight",
+            "width": "Narrow"
+          },
+          "description": "You have a narrow, short nose with a straight shape and High bridge.",
+          "measurements": {
+            "bridge_width": 22,
+            "height": 33,
+            "width": 22,
+            "width_ratio": 0.67
+          }
+        },
+        "overall_score": 30
+      }
+    ],
+    "face_count": 24,
+    "filename_base": "api_20250723_171737_e5c1e181",
+    "image_urls": {
+      "face_1": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_1_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_1_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_1_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_1_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_1_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_1_original.png"
+      },
+      "face_10": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_10_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_10_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_10_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_10_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_10_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_10_original.png"
+      },
+      "face_11": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_11_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_11_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_11_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_11_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_11_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_11_original.png"
+      },
+      "face_12": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_12_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_12_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_12_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_12_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_12_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_12_original.png"
+      },
+      "face_13": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_13_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_13_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_13_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_13_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_13_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_13_original.png"
+      },
+      "face_14": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_14_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_14_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_14_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_14_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_14_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_14_original.png"
+      },
+      "face_15": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_15_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_15_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_15_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_15_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_15_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_15_original.png"
+      },
+      "face_16": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_16_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_16_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_16_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_16_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_16_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_16_original.png"
+      },
+      "face_17": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_17_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_17_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_17_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_17_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_17_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_17_original.png"
+      },
+      "face_18": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_18_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_18_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_18_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_18_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_18_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_18_original.png"
+      },
+      "face_19": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_19_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_19_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_19_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_19_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_19_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_19_original.png"
+      },
+      "face_2": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_2_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_2_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_2_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_2_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_2_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_2_original.png"
+      },
+      "face_20": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_20_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_20_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_20_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_20_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_20_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_20_original.png"
+      },
+      "face_21": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_21_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_21_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_21_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_21_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_21_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_21_original.png"
+      },
+      "face_22": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_22_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_22_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_22_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_22_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_22_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_22_original.png"
+      },
+      "face_23": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_23_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_23_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_23_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_23_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_23_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_23_original.png"
+      },
+      "face_24": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_24_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_24_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_24_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_24_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_24_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_24_original.png"
+      },
+      "face_3": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_3_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_3_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_3_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_3_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_3_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_3_original.png"
+      },
+      "face_4": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_4_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_4_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_4_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_4_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_4_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_4_original.png"
+      },
+      "face_5": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_5_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_5_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_5_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_5_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_5_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_5_original.png"
+      },
+      "face_6": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_6_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_6_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_6_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_6_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_6_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_6_original.png"
+      },
+      "face_7": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_7_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_7_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_7_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_7_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_7_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_7_original.png"
+      },
+      "face_8": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_8_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_8_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_8_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_8_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_8_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_8_original.png"
+      },
+      "face_9": {
+        "features": {
+          "eyebrows": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_9_eyebrows.png",
+          "eyes": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_9_eyes.png",
+          "face_outline": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_9_face_outline.png",
+          "lips": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_9_lips.png",
+          "nose": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_9_nose.png"
+        },
+        "original": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181_face_9_original.png"
+      }
+    },
+    "original_image_url": "http://localhost:5001/api/image/api_20250723_171737_e5c1e181.jpg",
+    "tool_type": "face_analysis"
+  },
+  "message": "Face analysis completed successfully. Found 24 face(s).",
+  "success": true,
+  "timestamp": "2025-07-23T17:17:39.917742"
+}
